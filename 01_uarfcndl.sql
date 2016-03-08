@@ -4,7 +4,7 @@ DROP FUNCTION IF EXISTS create_uarfcndl_polygons_layers_multiple(queries text, d
 CREATE FUNCTION 
 create_uarfcndl_polygons_layers_multiple(
 tableName text,
-d int, /*initial distance, radius of the lowest arfcn for the polygon semicircle. If we have these arfcns: 4436,10812 and 10787. The lowest arfcn is 4436 */
+d int, /*initial distance: radius of the lowest arfcn for the polygon semicircle. If we have these arfcns: 4436,10812 and 10787. The lowest arfcn is 4436 */
 step int /*delta distance in relation to lowest arfcn polygon radius => the second lowest arfcn will have d+step distance*/
 ) RETURNS VOID AS $dbvis$
 DECLARE
