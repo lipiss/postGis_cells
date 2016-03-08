@@ -164,7 +164,10 @@ BEGIN
         SELECT 'CREATE TABLE ' || tableName ||i || 
         ' AS SELECT
         ''' ||i||''' as subnetwork,
-        ST_ConcaveHull(ST_Collect(ST_SetSRID(ST_MakePoint(longitude, latitude), 4326)),'||target_percent||',true) As subnetworkPolygon
+        ST_ConcaveHull(ST_Collect(ST_SetSRID(ST_MakePoint(longitude, latitude), 4326)),'||target_percent||',true) As subnetworkPolygon,
+        ST_Buffer(ST_Transform(
+        ST_ConcaveHull(ST_Collect(ST_SetSRID(ST_MakePoint(longitude, latitude), 4326)),'||target_percent||',true)
+        ,26986),-1000)::geometry(Polygon,26986) As subnetworkPolygonbuffer /*introduces -1000m of buffer*/
         FROM public.sector_location_csv As d
         where LONGITUDE<>0 or LATITUDE<>0
         GROUP BY subnetwork HAVING subnetwork=''' ||i||'''' into query;
