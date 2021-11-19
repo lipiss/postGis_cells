@@ -8,4 +8,3 @@ host    all             all             0.0.0.0/0           md5
 To create a database in postgis:
 CREATE DATABASE example_gis;
 CREATE EXTENSION postgis;
-bye, see you
