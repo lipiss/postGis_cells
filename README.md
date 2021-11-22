@@ -9,3 +9,4 @@ To create a database in postgis:
 CREATE DATABASE example_gis;
 CREATE EXTENSION postgis;
 hello
+bye
